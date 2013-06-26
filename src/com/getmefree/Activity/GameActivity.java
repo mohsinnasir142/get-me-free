@@ -60,7 +60,9 @@ public class GameActivity extends BaseGameActivity {
 		engineOptions.getAudioOptions().setNeedsMusic(true).setNeedsSound(true);
 		// Screen will remain awake while using.
 		engineOptions.setWakeLockOptions(WakeLockOptions.SCREEN_ON);
-
+		//enable dithering for the whole engine.
+		//engineOptions.getRenderOptions().setDithering(true);
+		
 		return engineOptions;
 	}
 
