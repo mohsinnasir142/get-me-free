@@ -1,5 +1,15 @@
 Final Year Project: Game Development
 
+GameActivity Methods:
+
+- onCreateEngineOptions() - this is a place to set the basic configuration, such as camera width, height and resolution policy.
+
+- onCreateResources() - in this method your code should load all resources needed to create textures for your wallpaper. As new AndEngine introduces callbacks mechanism to give you more control over the engine initialization, you will notice the rsrCallback.onCreateResourcesFinished() line at the end of this method - you should call this after all resources are loaded to trigger further engine initialization steps.
+
+- onCreateScene - as name suggest, this is a perfect place to create new scene. After creation, scene object is passed to the sceneCallback object.
+
+- onPopulateScene - in this method you should fill your scene with the objects that you intend to draw (sprites). Populate the scene will different entities. This could be anything from adding enemies to our scene, adding a player, playing music, setup menu options, or pretty much anything else you can think of
+
 1.Engine: 
 The Engine make the game proceed in small discrete steps of time. The Engine manages to synchronize a periodic drawing and updating of the Scene, which contains all the content that your game is currently handling actively
 
@@ -71,16 +81,31 @@ BitmapTextureAtlasTextureRegionFactory: It is the device built into AndEngine th
 
 we are applying a specified image to the mBitmapTextureAtlas object as well as defining where, exactly, that image will be placed on the atlas. Using the BitmapTextureAtlasTextureRegionFactory class, we can call the createFromAsset(pBitmapTextureAtlas, pContext, pAssetPath, pTextureX, pTextureY) method, which makes creating the texture region a piece of cake
 
-9. Sprites: A sprite is a two-dimensional image or animation that is integrated into a larger scene.
+9. Sprites: A sprite is a two-dimensional image or animation that is integrated into a larger scene. Sprites are one of the fundamentals that you will need when building games in AndEngine. They allow you to import an image into a texture which can be applied to a sprite which essentially allows us to use our own or in fact any artwork in our game.
 
+Types of Sprites:
 
-10.
+-A Sprite: The Sprite uses a texture  which is taken from a TextureRegion. This is the most basic kind of sprite. It mostly just sits there. Unless its picture is manually changed, it stays the same.
+
+-A Tiled Sprite:  A tiled sprite is somewhere halfway in between a regular sprite and an animated sprite, it does not animate at a regular rate, but it takes a tiled texture region, and with a command (found below) can switch between its different tiles.For example buttons, you can easily create button with multiple states, like for example "normal", "clicked" etc, to make your game looks even more professional.
+
+-An Animated Sprite: This is a extension of the TiledSprite class, it has some additional functions, most important one is animating possibility. If you are making a game, you will probably be using at least one AnimatedSprite and it takes in a series of images and plays them at whatever speed you specify
+
+10. Dithering:  It adds some grains to the image, delivering overall quality. (Enabling and Disabling) 
+	We can Apply Dithering for the whole Engine.
+	And Also Apply Dithering on the single sprite.
 
 11.
 
 12.
 
 13.
+
+14.
+
+15.
+
+16.
 Screen Resolution Detects
 
 320 x 240 is the smallest resolution I believe. Have tried this on my device which has 800 x 480 resolution and all works fine
