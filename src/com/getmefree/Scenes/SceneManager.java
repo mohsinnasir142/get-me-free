@@ -83,7 +83,8 @@ public class SceneManager {
 	{
 		return currentScene;
 	}
-	
+	//method responsible for initializing scene. 
+	//In the parameter we will use OnCreateSceneCallback, because we will need it in the activity.
 	public void createSplashScene(OnCreateSceneCallback pOnCreateSceneCallback)
 	{
 	    ResourceManager.getInstance().loadSplashScreen();
@@ -91,7 +92,8 @@ public class SceneManager {
 	    currentScene = SplashScene;
 	    pOnCreateSceneCallback.onCreateSceneFinished(SplashScene);
 	}
-	
+	//method responsible for disposing splash scene
+	//(to dispose it when it will not be longer needed, which means after we successfully loaded menu resources)
 	private void disposeSplashScene()
 	{
 	    ResourceManager.getInstance().unloadSplashScreen();
