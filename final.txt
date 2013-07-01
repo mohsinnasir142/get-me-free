@@ -95,9 +95,11 @@ Types of Sprites:
 	We can Apply Dithering for the whole Engine.
 	And Also Apply Dithering on the single sprite.
 
-11.
+11. Update Handler: It is something which you can create, and register within your Engine or Scene so that it is run on every update that AndEngine does! These can be quite powerful, allowing you to run certain tasks every update without having to override the onManagedUpdate() function within a custom class.
 
-12.
+Time Handler: Timer Handler is to allow your game to perform specific actions after a certain amount of time. When you register this Timer Handler with AndEngine, it will perform a callback once the specified time has been reached.
+
+12. 
 
 13.
 
@@ -106,6 +108,7 @@ Types of Sprites:
 15.
 
 16.
+
 Screen Resolution Detects
 
 320 x 240 is the smallest resolution I believe. Have tried this on my device which has 800 x 480 resolution and all works fine
