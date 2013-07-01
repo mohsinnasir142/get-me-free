@@ -5,6 +5,7 @@ import org.andengine.engine.camera.Camera;
 import org.andengine.opengl.texture.TextureOptions;
 import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlas;
 import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlasTextureRegionFactory;
+import org.andengine.opengl.texture.atlas.bitmap.BuildableBitmapTextureAtlas;
 import org.andengine.opengl.texture.region.ITextureRegion;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
@@ -31,6 +32,15 @@ public class ResourceManager {
 	public ITextureRegion splash_region;
 	// TextureRegions are the areas inside a Texture that are used for the
 	// sprite.
+	
+	public ITextureRegion menu_region;
+	public ITextureRegion new_game_region;
+	public ITextureRegion setting_region;
+	public ITextureRegion Help_region;
+	public ITextureRegion Exit_region;
+	
+	private BuildableBitmapTextureAtlas menuTextureAtlas;
+	
 	private BitmapTextureAtlas splashTextureAtlas;
 
 	// BitmapTextureAtlas is the picture that is loaded into the memory. It will
