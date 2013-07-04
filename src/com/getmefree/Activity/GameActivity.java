@@ -15,7 +15,9 @@ import org.andengine.engine.options.resolutionpolicy.RatioResolutionPolicy;
 import org.andengine.entity.scene.Scene;
 import org.andengine.ui.activity.BaseGameActivity;
 
+import android.provider.Settings.System;
 import android.util.DisplayMetrics;
+import android.view.KeyEvent;
 
 public class GameActivity extends BaseGameActivity {
 
@@ -48,7 +50,8 @@ public class GameActivity extends BaseGameActivity {
 
 		// new Camera(pX, pY, pWidth, pHeight) --> pX and pY position of the
 		// Platform.
-		camera = new Camera(0, 0, CAMERA_WIDTH, CAMERA_HEIGHT);
+		//camera = new Camera(0, 0, CAMERA_WIDTH, CAMERA_HEIGHT);
+		camera = new Camera(0,0,800,480);
 		// Camera is the rectangle of the scene that is drawn on the screen.
 
 		// EngineOptions engineOptions = new EngineOptions(pFullscreen,
@@ -101,10 +104,30 @@ public class GameActivity extends BaseGameActivity {
 	            public void onTimePassed(final TimerHandler pTimerHandler) 
 	            {
 	                mEngine.unregisterUpdateHandler(pTimerHandler);
-
+	                SceneManager.getInstance().createMenuScene();
 	            }
 	    }));
 	    pOnPopulateSceneCallback.onPopulateSceneFinished();
 	}
+
+//	@Override
+//	protected void onDestroy() {
+//		// TODO Auto-generated method stub
+//	//	super.onDestroy();
+//	//	java.lang.System.exit(0);
+//	}
+
+//	@Override
+//	public boolean onKeyDown(int keyCode, KeyEvent event) {
+//		// TODO Auto-generated method stub
+////		if(keyCode == KeyEvent.KEYCODE_BACK)
+////		{
+////			SceneManager.getInstance().getCurrentScene().onBackKeyPressed();
+////		}
+//		
+//		return false;
+//	}
+	
+	
 
 }
