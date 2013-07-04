@@ -99,7 +99,7 @@ Types of Sprites:
 
 Time Handler: Timer Handler is to allow your game to perform specific actions after a certain amount of time. When you register this Timer Handler with AndEngine, it will perform a callback once the specified time has been reached.
 
-12. 
+12. HUD: (heads-up display) is the method by which information is visually relayed to the player as part of a game's user interface.
 
 13.
 
