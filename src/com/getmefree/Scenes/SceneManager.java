@@ -1,6 +1,8 @@
 package com.getmefree.Scenes;
 
 import org.andengine.engine.Engine;
+import org.andengine.engine.handler.timer.ITimerCallback;
+import org.andengine.engine.handler.timer.TimerHandler;
 import org.andengine.ui.IGameInterface.OnCreateSceneCallback;
 
 import com.getmefree.resources.ResourceManager;
@@ -99,5 +101,49 @@ public class SceneManager {
 	    ResourceManager.getInstance().unloadSplashScreen();
 	    SplashScene.disposeScene();
 	    SplashScene = null;
+	}
+	
+	public void createMenuScene()
+	{
+		ResourceManager.getInstance().loadMenuResources();
+		MenuScene = new MainMenuScene();
+		LoadingScene = new LoadingScene();
+		SceneManager.getInstance().setScene(MenuScene);
+		disposeSplashScene();
+	}
+	
+	public void loadGameScene(final Engine mEngine)
+	{
+		setScene(LoadingScene);
+		ResourceManager.getInstance().unloadMenuTextures();
+//		mEngine.registerUpdateHandler(new TimerHandler(1.1f, new ITimerCallback() {
+//			
+//			@Override
+//			public void onTimePassed(TimerHandler pTimerHandler) {
+//				// TODO Auto-generated method stub
+//				mEngine.unregisterUpdateHandler(pTimerHandler);
+//				ResourceManager.getInstance().loadGameResources();
+//				GameScene = new GameScene();
+//				setScene(GameScene);
+//			}
+//		}));
+	}
+	// loading back to menu scene from game scene.
+	public void loadingMenuScene(final Engine mEngine)
+	{
+		setScene(MenuScene);
+		GameScene.disposeScene();
+		ResourceManager.getInstance().unloadGameTexture();
+		mEngine.registerUpdateHandler(new TimerHandler(0.1f,new ITimerCallback() {
+			
+			@Override
+			public void onTimePassed(TimerHandler pTimerHandler) {
+				// TODO Auto-generated method stub
+					mEngine.unregisterUpdateHandler(pTimerHandler);
+					ResourceManager.getInstance().loadMenuResources();
+					setScene(MenuScene);
+					
+			}
+		}));
 	}
 }

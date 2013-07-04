@@ -2,12 +2,20 @@ package com.getmefree.resources;
 
 import org.andengine.engine.Engine;
 import org.andengine.engine.camera.Camera;
+import org.andengine.opengl.font.Font;
+import org.andengine.opengl.font.FontFactory;
+import org.andengine.opengl.texture.ITexture;
 import org.andengine.opengl.texture.TextureOptions;
 import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlas;
 import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlasTextureRegionFactory;
 import org.andengine.opengl.texture.atlas.bitmap.BuildableBitmapTextureAtlas;
+import org.andengine.opengl.texture.atlas.bitmap.source.IBitmapTextureAtlasSource;
+import org.andengine.opengl.texture.atlas.buildable.builder.BlackPawnTextureAtlasBuilder;
+import org.andengine.opengl.texture.atlas.buildable.builder.ITextureAtlasBuilder.TextureAtlasBuilderException;
 import org.andengine.opengl.texture.region.ITextureRegion;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
+import org.andengine.util.color.Color;
+import org.andengine.util.debug.Debug;
 
 import com.getmefree.Activity.GameActivity;
 
@@ -23,6 +31,8 @@ public class ResourceManager {
 	public GameActivity gameActivity;
 	public Camera camera;
 	public VertexBufferObjectManager vbom;
+	
+	public Font font;
 	/*
 	 * It creates "buffer objects" for vertex attributes in high-performance
 	 * memory on the server side and provides same access functions to reference
@@ -34,15 +44,20 @@ public class ResourceManager {
 	// sprite.
 	
 	public ITextureRegion menu_region;
-	public ITextureRegion new_game_region;
+	
+	// buttons
+	public ITextureRegion play_region;
+	public ITextureRegion continue_region;
+	public ITextureRegion high_score_region;
 	public ITextureRegion setting_region;
-	public ITextureRegion Help_region;
-	public ITextureRegion Exit_region;
+	public ITextureRegion instructions_region;
+	public ITextureRegion exit_region;
 	
 	private BuildableBitmapTextureAtlas menuTextureAtlas;
 	
 	private BitmapTextureAtlas splashTextureAtlas;
 
+	//public ITexture mainFontTexture;
 	// BitmapTextureAtlas is the picture that is loaded into the memory. It will
 	// be the final product.
 
@@ -68,15 +83,39 @@ public class ResourceManager {
 	}
 
 	private void loadMenuGraphics() {
-
+//same as splash menu graphics method
+		BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/menu/");
+		menuTextureAtlas = new BuildableBitmapTextureAtlas(gameActivity.getTextureManager(), 1024,1024,TextureOptions.BILINEAR);
+		menu_region = BitmapTextureAtlasTextureRegionFactory.createFromAsset(menuTextureAtlas, gameActivity,"menu.jpg");
+		
+		play_region = BitmapTextureAtlasTextureRegionFactory.createFromAsset(menuTextureAtlas, gameActivity, "play.png");
+		continue_region = BitmapTextureAtlasTextureRegionFactory.createFromAsset(menuTextureAtlas, gameActivity, "continuebutton.png");
+		setting_region = BitmapTextureAtlasTextureRegionFactory.createFromAsset(menuTextureAtlas, gameActivity, "settings.png");
+		high_score_region = BitmapTextureAtlasTextureRegionFactory.createFromAsset(menuTextureAtlas, gameActivity, "highscore.png");
+		instructions_region = BitmapTextureAtlasTextureRegionFactory.createFromAsset(menuTextureAtlas, gameActivity, "instructions.png");
+		exit_region = BitmapTextureAtlasTextureRegionFactory.createFromAsset(menuTextureAtlas, gameActivity, "exit.png");
+//	
+		try{																									// border spacing
+			this.menuTextureAtlas.build(new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(1,2,1));
+			this.menuTextureAtlas.load();
+			
+		}
+		catch(final TextureAtlasBuilderException e)
+		{
+			Debug.e(e);
+		}
 	}
-
 	private void loadGameFonts() {
 
 	}
 
 	private void loadMenuFonts() {
-
+		FontFactory.setAssetBasePath("font/");
+		final ITexture mainFontTexture = new BitmapTextureAtlas(gameActivity.getTextureManager(), 256, 256, TextureOptions.BILINEAR_PREMULTIPLYALPHA);
+		//FontFactory.createStrokeFromAsset(pFontManager, pTexture, pAssetManager, pAssetPath, pSize, pAntiAlias, pColor, pStrokeWidth, pStrokeColor, pStrokeOnly)
+		//font = FontFactory.createStrokeFromAsset(gameActivity.getFontManager(), mainFontTexture, gameActivity.getAssets(), "font.ttf", 50, true, Color.WHITE, 2, Color.BLACK);
+		font=FontFactory.createStrokeFromAsset(gameActivity.getFontManager(), mainFontTexture, gameActivity.getAssets(), "loading.ttf", 20, true, Color.BLACK_ABGR_PACKED_INT, 2, Color.WHITE_ABGR_PACKED_INT);
+		font.load();
 	}
 
 	private void loadGameAudio() {
@@ -113,6 +152,21 @@ public class ResourceManager {
 		splash_region = null;
 	}
 
+	public void loadMenuTextures()
+	{
+		menuTextureAtlas.load();
+	}
+	
+	public void unloadMenuTextures()
+	{
+		menuTextureAtlas.unload();
+	}
+	
+	public void unloadGameTexture()
+	{
+		
+	}
+
 	// a prepareManager method -- use this method while initializing our game.
 	public static void prepareManager(Engine engine, GameActivity gameActivity,
 			Camera camera, VertexBufferObjectManager vbom) {
@@ -120,6 +174,6 @@ public class ResourceManager {
 		getInstance().camera = camera;
 		getInstance().gameActivity = gameActivity;
 		getInstance().vbom = vbom;
-
+		
 	}
 }
