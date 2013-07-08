@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package com.finalyearproject.getmefree;
+package com.getmefree.Activity;
 
 public final class R {
     public static final class attr {
