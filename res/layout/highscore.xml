@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+<TableLayout  
+   
+    android:id="@+id/tableLayout1"  
+    android:layout_width="match_parent"  
+    android:layout_height="match_parent"  
+    android:shrinkColumns="*"  
+    android:background="@drawable/highscore"
+    android:stretchColumns="*"
+    android:weightSum="4"
+android:paddingLeft="20dp" android:paddingRight="20dp"    > 
+<!-- <ScrollView     android:layout_width="fill_parent"
+		android:layout_height="fill_parent">
+
+		<LinearLayout android:orientation="vertical" android:weightSum="4"
+			android:layout_width="fill_parent" android:layout_height="fill_parent"> -->
+  	
+        <TableRow  
+        android:id="@+id/tableRow4"  
+        android:layout_height="wrap_content"  
+        android:layout_width="match_parent"  
+        android:gravity="center"
+        android:weightSum="1">  
+        <TextView  
+            android:id="@+id/textView9"  
+            android:layout_width="match_parent"  
+            android:layout_height="wrap_content"  
+            android:textStyle="bold|italic"  
+            android:typeface="serif"  
+            android:textSize="30dp"  
+            android:textColor="@color/golden"
+            android:text="High Score "  
+            android:gravity="center"  
+            android:layout_span="6"></TextView>  
+    </TableRow>  
+  
+    <TableRow  
+        android:layout_height="wrap_content"  
+        android:id="@+id/tableRow2"  
+        android:layout_width="match_parent" android:background="@drawable/roundcorner" 
+        android:weightSum="1" android:gravity="center"   >  
+        <TextView  
+            android:text="Name"  
+            android:id="@+id/textView22"  android:textSize="26sp"   android:textColor="@color/golden"  
+            android:textStyle="bold"></TextView>  
+        <TextView  
+            android:id="@+id/textView23"  
+            android:text="Level"  android:textSize="26sp"   android:textColor="@color/golden"
+            android:gravity="center_horizontal"></TextView>  
+        <TextView  
+            android:text="Score"  
+            android:id="@+id/textView24"  android:textSize="26sp"   android:textColor="@color/golden"
+            android:gravity="center_horizontal"></TextView>  
+        <TextView  
+            android:text="Awards"  
+            android:id="@+id/textView25"  android:textSize="26sp"   android:textColor="@color/golden"
+            android:gravity="center_horizontal"></TextView>  
+    </TableRow>  
+    <TextView android:id="@+id/mohisn"  android:layout_width="wrap_content"  android:layout_height="wrap_content" android:text="\n" />
+    <TableRow  
+        android:layout_height="wrap_content"  
+        android:id="@+id/tableRow3"  
+        android:layout_width="match_parent"
+        
+        android:weightSum="1" android:gravity="center" android:background="@drawable/roundcorner" >  
+        <TextView  
+            android:text="Zeeshan Amjad"  
+            android:id="@+id/textView32"  android:textColor="@color/textWhite"
+            android:textStyle="bold"></TextView>  
+        <TextView  
+            android:text="15"  
+            android:id="@+id/textView33"  android:textColor="@color/textWhite"
+            android:gravity="center_horizontal"></TextView>  
+        <TextView  
+            android:text="1485"  
+            android:id="@+id/textView34"  android:textColor="@color/textWhite"
+            android:gravity="center_horizontal"></TextView>  
+        <ImageView  
+            android:id="@+id/imageView33"  
+            android:src="@drawable/first"></ImageView>  
+    </TableRow>
+       <TableRow  
+        android:id="@+id/tableRow4"  
+        android:layout_height="wrap_content"  
+        android:layout_width="match_parent"  android:background="@drawable/roundcorner"
+        android:gravity="center"  >  
+   
+        <TextView  
+            android:text="Waqas Iqbal"  
+            android:id="@+id/textView42"  android:textColor="@color/textWhite"
+            android:textStyle="bold"></TextView>  
+        <TextView  
+            android:text="12"  
+            android:id="@+id/textView43"  android:textColor="@color/textWhite"
+            android:gravity="center_horizontal"></TextView>  
+        <TextView  
+            android:text="1365"  
+            android:id="@+id/textView44"  android:textColor="@color/textWhite"
+            android:gravity="center_horizontal"></TextView>  
+        <ImageView  
+            android:id="@+id/imageView43"  
+            android:src="@drawable/second"></ImageView> 
+       
+       </TableRow>
+           <TableRow  
+        android:id="@+id/tableRow5"  
+        android:layout_height="wrap_content"  
+        android:layout_width="match_parent"  android:background="@drawable/roundcorner"
+        android:gravity="center"  >  
+   
+        <TextView  
+            android:text="Hamza Hassan"  
+            android:id="@+id/textView52"  android:textColor="@color/textWhite"
+            android:textStyle="bold"></TextView>  
+        <TextView  
+            android:text="11"  
+            android:id="@+id/textView53"  android:textColor="@color/textWhite"
+            android:gravity="center_horizontal"></TextView>  
+        <TextView  
+            android:text="1145"  
+            android:id="@+id/textView54"  android:textColor="@color/textWhite"
+            android:gravity="center_horizontal"></TextView>  
+        <ImageView  
+            android:id="@+id/imageView53"  
+            android:src="@drawable/third"></ImageView> 
+       
+       </TableRow>
+           <TableRow  
+        android:id="@+id/tableRow6"  
+        android:layout_height="wrap_content"  
+        android:layout_width="match_parent"  android:background="@drawable/roundcorner"
+        android:gravity="center"  >  
+   
+        <TextView  
+            android:text="Mudassar Rana"  
+            android:id="@+id/textView62"  android:textColor="@color/textWhite"
+            android:textStyle="bold"></TextView>  
+        <TextView  
+            android:text="9"  
+            android:id="@+id/textView63"  android:textColor="@color/textWhite"
+            android:gravity="center_horizontal"></TextView>  
+        <TextView  
+            android:text="1093"  
+            android:id="@+id/textView64"  android:textColor="@color/textWhite"
+            android:gravity="center_horizontal"></TextView>  
+        <ImageView  
+            android:id="@+id/imageView63"  
+            android:src="@drawable/fourth"></ImageView> 
+       
+       </TableRow>
+           <TableRow  
+        android:id="@+id/tableRow7"  
+        android:layout_height="wrap_content"  
+        android:layout_width="match_parent"  android:background="@drawable/roundcorner"
+        android:gravity="center"  >  
+   
+        <TextView  
+            android:text="Zain Zaidi"  
+            android:id="@+id/textView72"  android:textColor="@color/textWhite"
+            android:textStyle="bold"></TextView>  
+        <TextView  
+            android:text="8"  
+            android:id="@+id/textView73"  android:textColor="@color/textWhite"
+            android:gravity="center_horizontal"></TextView>  
+        <TextView  
+            android:text="875"  
+            android:id="@+id/textView74"  android:textColor="@color/textWhite"
+            android:gravity="center_horizontal"></TextView>  
+        <ImageView  
+            android:id="@+id/imageView73"  
+            android:src="@drawable/fifth"></ImageView> 
+       
+       </TableRow>
+       
+           
+           
+           
+           
+           
+            <TableRow  
+        android:id="@+id/tableRow8"  
+        android:layout_height="wrap_content"  
+        android:layout_width="match_parent"  android:background="@drawable/roundcorner"
+        android:gravity="center"  >  
+   
+        <TextView  
+            android:text="Jehanzaib Ahmed"  
+            android:id="@+id/textView82"  android:textColor="@color/textWhite"
+            android:textStyle="bold"></TextView>  
+        <TextView  
+            android:text="7"  
+            android:id="@+id/textView83"  android:textColor="@color/textWhite"
+            android:gravity="center_horizontal"></TextView>  
+        <TextView  
+            android:text="632"  
+            android:id="@+id/textView84"  android:textColor="@color/textWhite"
+            android:gravity="center_horizontal"></TextView>  
+        <ImageView  
+            android:id="@+id/imageView83"  
+            android:src="@drawable/sixth"></ImageView> 
+       
+       </TableRow>
+       
+            
+             <TableRow  
+        android:id="@+id/tableRow9"  
+        android:layout_height="wrap_content"  
+        android:layout_width="match_parent"  android:background="@drawable/roundcorner"
+        android:gravity="center"  >  
+   
+        <TextView  
+            android:text="Mohsin Nasir"  
+            android:id="@+id/textView92"  android:textColor="@color/textWhite"
+            android:textStyle="bold"></TextView>  
+        <TextView  
+            android:text="5"  
+            android:id="@+id/textView93"  android:textColor="@color/textWhite"
+            android:gravity="center_horizontal"></TextView>  
+        <TextView  
+            android:text="235"  
+            android:id="@+id/textView94"  android:textColor="@color/textWhite"
+            android:gravity="center_horizontal"></TextView>  
+        <ImageView  
+            android:id="@+id/imageView93"  
+            android:src="@drawable/seventh"></ImageView> 
+       
+       </TableRow>
+      <!--  </LinearLayout></ScrollView> -->
+             
+    </TableLayout>
+   </ScrollView>
+    
