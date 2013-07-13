@@ -8,6 +8,10 @@
         android:minSdkVersion="8"
         android:targetSdkVersion="17" />
 
+    	<uses-feature android:glEsVersion="0x00020000" android:required="true"/>
+	<uses-feature android:name="android.hardware.touchscreen" android:required="false"/>
+    
+    
 <!-- Enabling the most important permissions, such as internet access, wifi access, vibrate, wake lock etc
  (Used if you would like to include advertisements in your app etc) -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>

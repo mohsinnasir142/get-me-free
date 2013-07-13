@@ -1,5 +1,7 @@
 package com.getmefree.Activity;
 
+
+import com.getmefree.Scenes.GameScene;
 import com.getmefree.Scenes.SceneManager;
 import com.getmefree.resources.ResourceManager;
 
@@ -15,6 +17,9 @@ import org.andengine.engine.options.resolutionpolicy.RatioResolutionPolicy;
 import org.andengine.entity.scene.Scene;
 import org.andengine.ui.activity.BaseGameActivity;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.provider.Settings.System;
 import android.util.DisplayMetrics;
 import android.view.KeyEvent;
@@ -23,7 +28,8 @@ public class GameActivity extends BaseGameActivity {
 
 	private Camera camera;
 	private ResourceManager resourceManager;
-
+	private GameScene gameScene;
+	private static final int DIALOG_ALLOWDIAGONAL_ID = 0;
 	@Override
 	public Engine onCreateEngine(EngineOptions pEngineOptions) {
 		// TODO Auto-generated method stub
@@ -99,7 +105,7 @@ public class GameActivity extends BaseGameActivity {
 	public void onPopulateScene(Scene pScene,
 			OnPopulateSceneCallback pOnPopulateSceneCallback) throws Exception {
 		// TODO Auto-generated method stub
-		mEngine.registerUpdateHandler(new TimerHandler(2f, new ITimerCallback()
+		mEngine.registerUpdateHandler(new TimerHandler(0.4f, new ITimerCallback()
 		{
 	            public void onTimePassed(final TimerHandler pTimerHandler) 
 	            {
@@ -109,24 +115,58 @@ public class GameActivity extends BaseGameActivity {
 	    }));
 	    pOnPopulateSceneCallback.onPopulateSceneFinished();
 	}
+	
+	@Override
+	public void onGameCreated() {
+		this.showDialog(DIALOG_ALLOWDIAGONAL_ID);
+	}
 
-//	@Override
-//	protected void onDestroy() {
-//		// TODO Auto-generated method stub
-//	//	super.onDestroy();
-//	//	java.lang.System.exit(0);
-//	}
+	@Override
+	protected Dialog onCreateDialog(final int pID) {
+		// TODO Auto-generated method stub
+		switch(pID) {
+		case DIALOG_ALLOWDIAGONAL_ID:
+			return new AlertDialog.Builder(this)
+			.setTitle("Setup...")
+			.setMessage("Do you wish to allow diagonal directions on the OnScreenControl?")
+			.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(final DialogInterface pDialog, final int pWhich) {
+					gameScene.mDigitalOnScreenControl .setAllowDiagonal(true);
+				}
+			})
+			.setNegativeButton("No", new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(final DialogInterface pDialog, final int pWhich) {
+					gameScene.mDigitalOnScreenControl.setAllowDiagonal(false);
+				}
+			})
+			.create();
+	}
+	return super.onCreateDialog(pID);
+	}
 
-//	@Override
-//	public boolean onKeyDown(int keyCode, KeyEvent event) {
-//		// TODO Auto-generated method stub
-////		if(keyCode == KeyEvent.KEYCODE_BACK)
-////		{
-////			SceneManager.getInstance().getCurrentScene().onBackKeyPressed();
-////		}
-//		
-//		return false;
-//	}
+
+
+	
+	
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		java.lang.System.exit(0);
+	}
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		// TODO Auto-generated method stub
+		if(keyCode == KeyEvent.KEYCODE_BACK)
+		{
+			SceneManager.getInstance().getCurrentScene().onBackKeyPressed();
+		}
+		
+		return false;
+	}
 	
 	
 

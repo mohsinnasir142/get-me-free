@@ -13,6 +13,7 @@ import org.andengine.opengl.texture.atlas.bitmap.source.IBitmapTextureAtlasSourc
 import org.andengine.opengl.texture.atlas.buildable.builder.BlackPawnTextureAtlasBuilder;
 import org.andengine.opengl.texture.atlas.buildable.builder.ITextureAtlasBuilder.TextureAtlasBuilderException;
 import org.andengine.opengl.texture.region.ITextureRegion;
+import org.andengine.opengl.texture.region.TiledTextureRegion;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 import org.andengine.util.color.Color;
 import org.andengine.util.debug.Debug;
@@ -53,14 +54,53 @@ public class ResourceManager {
 	public ITextureRegion instructions_region;
 	public ITextureRegion exit_region;
 	
+	public TiledTextureRegion loading_region;
+	
 	private BuildableBitmapTextureAtlas menuTextureAtlas;
 	
 	private BitmapTextureAtlas splashTextureAtlas;
+	
+	private BuildableBitmapTextureAtlas loadingTextureAtlas;
+	
+	private BitmapTextureAtlas playerTextureAtlas;
+	private BitmapTextureAtlas touchtextureAtlas;
+	
+	public ITextureRegion player_texture_region;
+	public ITextureRegion touch_texture;
+	public ITextureRegion touchKnob_texture;
+	
+	
+	private BitmapTextureAtlas animatedsprite_texture_atlas;
+	
+	public TiledTextureRegion player1_texture_region;
+	public TiledTextureRegion player2_texture_region;
+	
+	private BitmapTextureAtlas BackgroundTexture;
+
+	public ITextureRegion mParallaxLayerBack;
+	public ITextureRegion mParallaxLayerMid;
+	public ITextureRegion mParallaxLayerFront;
 
 	//public ITexture mainFontTexture;
 	// BitmapTextureAtlas is the picture that is loaded into the memory. It will
 	// be the final product.
+	
+	private BitmapTextureAtlas bullettextureAtlas;
+	
+	public ITextureRegion bullet_texture_region;
+	
+	private BitmapTextureAtlas enemytextureAtlas;
+	
+	public ITextureRegion enemy_texture_region;
+	private BitmapTextureAtlas hostagetextureAtlas;
+	
+	public ITextureRegion hostage_texture_region;
 
+	private BitmapTextureAtlas firebuttontextureAtlas;
+	
+	public ITextureRegion fire_button_texture_region;
+	public ITextureRegion jump_button_texture_region;
+	
 	public static ResourceManager getInstance() {
 		return INSTANCE;
 	}
@@ -69,6 +109,7 @@ public class ResourceManager {
 		loadMenuGraphics();
 		loadMenuAudio();
 		loadMenuFonts();
+		loadGameLoadingSprite();
 	}
 
 	public void loadGameResources() {
@@ -79,9 +120,43 @@ public class ResourceManager {
 
 	// separate methods responsible for loading graphics, fonts and sounds
 	private void loadGameGraphics() {
-
+		loadGameResource();
+		loadBackgroundResource();
 	}
 
+	private void loadGameResource(){
+	BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/");
+
+
+	touchtextureAtlas = new BitmapTextureAtlas(gameActivity.getTextureManager(), 256, 128, TextureOptions.BILINEAR);
+	touch_texture = BitmapTextureAtlasTextureRegionFactory.createFromAsset(touchtextureAtlas,gameActivity, "onscreen_controlbase.png", 0, 0);
+	touchKnob_texture = BitmapTextureAtlasTextureRegionFactory.createFromAsset(touchtextureAtlas, gameActivity, "onscreen_control_knob.png", 128, 0);
+	touchtextureAtlas.load();
+	
+	
+	firebuttontextureAtlas = new BitmapTextureAtlas(gameActivity.getTextureManager(), 128, 128,TextureOptions.BILINEAR);
+	fire_button_texture_region = BitmapTextureAtlasTextureRegionFactory.createFromAsset(firebuttontextureAtlas, gameActivity,"fire.png",60,0 );
+	jump_button_texture_region = BitmapTextureAtlasTextureRegionFactory.createFromAsset(firebuttontextureAtlas, gameActivity, "jump.png",0,0);
+	firebuttontextureAtlas.load();
+	}
+	private void loadBackgroundResource()
+	{
+	BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/");
+	
+	animatedsprite_texture_atlas = new BitmapTextureAtlas(gameActivity.getTextureManager(), 1024,1024,TextureOptions.BILINEAR);
+	player1_texture_region = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(animatedsprite_texture_atlas, gameActivity, "Hero.png", 0, 0,9,7);
+										//	BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(pBitmapTextureAtlas, pAssetManager, pAssetPath, pTextureX, pTextureY, pTileColumns, pTileRows)
+	//player2_texture_region = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(animatedsprite_texture_atlas, gameActivity, "animatedsprite1.png", 73, 0, 12, 2);
+	//BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(pBitmapTextureAtlas, pAssetManager, pAssetPath, pTextureX, pTextureY, pTileColumns, pTileRows)
+	animatedsprite_texture_atlas.load();
+
+	BackgroundTexture = new BitmapTextureAtlas(gameActivity.getTextureManager(), 1024, 1024);
+	mParallaxLayerFront = BitmapTextureAtlasTextureRegionFactory.createFromAsset(BackgroundTexture, gameActivity, "background-street.png", 0, 0);
+	mParallaxLayerBack = BitmapTextureAtlasTextureRegionFactory.createFromAsset(BackgroundTexture, gameActivity, "background.png", 0, 188);
+	mParallaxLayerMid = BitmapTextureAtlasTextureRegionFactory.createFromAsset(BackgroundTexture, gameActivity, "parallax_background_layer_mid.png", 0, 669);
+	BackgroundTexture.load();
+	}
+	
 	private void loadMenuGraphics() {
 //same as splash menu graphics method
 		BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/menu/");
@@ -105,6 +180,23 @@ public class ResourceManager {
 			Debug.e(e);
 		}
 	}
+	
+	private void loadBulletResources()
+	{
+		
+	}
+	
+	private void loadEnemyResources()
+	{
+		
+		
+	}
+	
+	private void loadHostageResources()
+	{
+		
+	}
+	
 	private void loadGameFonts() {
 
 	}
@@ -118,6 +210,20 @@ public class ResourceManager {
 		font.load();
 	}
 
+	private void loadGameLoadingSprite()
+	{
+		FontFactory.setAssetBasePath("gfx/loading/");
+		loadingTextureAtlas = new BuildableBitmapTextureAtlas(gameActivity.getTextureManager(), 1024,512,TextureOptions.BILINEAR);
+		
+	//	loading_region = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(loadingTextureAtlas, gameActivity.getAssets(),"spriteloadingscene1.png", 13,1);
+		try {
+			this.loadingTextureAtlas.build(new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 0, 1));
+			this.loadingTextureAtlas.load();
+		} catch (final TextureAtlasBuilderException e) {
+			Debug.e(e);
+		}
+	
+	}
 	private void loadGameAudio() {
 
 	}
@@ -166,6 +272,7 @@ public class ResourceManager {
 	{
 		
 	}
+	
 
 	// a prepareManager method -- use this method while initializing our game.
 	public static void prepareManager(Engine engine, GameActivity gameActivity,
