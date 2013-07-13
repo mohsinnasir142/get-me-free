@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <TabHost android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/tabHost"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/background_color"
+   
+    >
+    <TabWidget
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@android:id/tabs"
+    android:background="@color/yellow"
+    
+    />
+
+     <FrameLayout
+         android:id="@android:id/tabcontent"
+         android:layout_width="match_parent"
+         android:layout_height="494dp" >
+
+     <LinearLayout
+         android:id="@+id/tab1"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:measureWithLargestChild="false"
+         android:orientation="vertical"
+         android:paddingTop="60px"
+         
+         
+          
+          
+          >
+          
+           <ImageView
+           android:id="@+id/imageView1"
+           android:paddingTop=".30in"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:src="@drawable/volumefont"  />
+         
+   <SeekBar
+         android:id="@+id/volumeSB"
+         android:paddingTop=".1in"
+         android:paddingLeft=".2in"
+         android:paddingRight=".2in"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"  />
+
+     </LinearLayout>
+     
+     <LinearLayout
+     android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/tab2"
+    android:orientation="vertical"
+    android:paddingTop="60px"
+    android:weightSum="3"
+    
+     >
+  <TableLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent" >
+
+           <TableRow
+               android:id="@+id/tableRow1"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:paddingTop="100dp"
+               android:paddingLeft="50dp"
+                android:weightSum="1"
+                >
+ <ImageButton
+           android:id="@+id/imageButton1"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:src="@drawable/english" />
+         
+               
+  <ImageButton
+           android:id="@+id/imageButton2"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:src="@drawable/urdu"
+           
+            />
+         
+              
+           
+           </TableRow>
+           
+          <TableRow
+               android:id="@+id/tableRow2"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:paddingTop="10dp"
+               android:paddingLeft="50dp"
+                android:weightSum="1"
+                >
+ <ImageButton
+           android:id="@+id/imageButton3"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:src="@drawable/dutch" />
+         
+               
+  <ImageButton
+           android:id="@+id/imageButton4"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:src="@drawable/italian"
+          
+            />
+         
+              
+           
+           </TableRow>
+                    
+
+           <TableRow
+               android:id="@+id/tableRow3"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:paddingTop="10dp"
+               android:paddingLeft="50dp"
+                android:weightSum="1"
+                >
+ <ImageButton
+           android:id="@+id/imageButton5"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:src="@drawable/german" />
+         
+               
+  <ImageButton
+           android:id="@+id/imageButton6"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:src="@drawable/french"
+           
+            />
+         
+              
+           
+           </TableRow>
+         
+          
+
+       </TableLayout>
+         
+         
+              
+         
+     </LinearLayout>
+     
+      <LinearLayout
+     android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/tab3"
+    android:orientation="vertical"
+    android:paddingTop="60px"
+     
+     >
+               
+          
+           <ImageView
+           android:id="@+id/imageView1"
+           android:paddingTop=".1in"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:src="@drawable/brightnessfont" />
+          
+   <SeekBar
+         android:id="@+id/brightnessSB"
+         android:paddingTop=".2in"
+         android:paddingLeft=".2in"
+         android:paddingRight=".2in"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content" />
+   
+   
+   
+        
+       <ImageView
+           android:id="@+id/imageView1"
+           android:paddingTop=".1in"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:src="@drawable/contrast" />
+   
+    <SeekBar
+         android:id="@+id/contrastSB"
+         android:paddingTop=".1in"
+         android:paddingLeft=".2in"
+         android:paddingRight=".2in"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content" />
+   
+
+   
+     </LinearLayout>
+     
+       <LinearLayout
+     android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/tab4"
+    android:orientation="vertical"
+    android:paddingTop="60px"
+     >
+    <ToggleButton 
+    android:id="@+id/togglebutton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:onClick="onToggleClicked"
+android:background="@drawable/btn_toggle"
+android:layout_gravity="center_horizontal"
+android:layout_marginTop="200dp"
+
+    /> 
+    </LinearLayout>
+
+       
+
+     </FrameLayout>
+       
+        </TabHost>
+    
+ 
+    
+
+     
+    
+    
+    
