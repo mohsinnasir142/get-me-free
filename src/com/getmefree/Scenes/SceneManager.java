@@ -111,10 +111,13 @@ public class SceneManager {
 		SceneManager.getInstance().setScene(MenuScene);
 		disposeSplashScene();
 	}
-	
+
 	public void loadGameScene(final Engine mEngine)
 	{
-		setScene(LoadingScene);
+//		setScene(LoadingScene);
+		ResourceManager.getInstance().loadGameResources();
+		GameScene = new GameScene();
+		setScene(GameScene);
 		ResourceManager.getInstance().unloadMenuTextures();
 //		mEngine.registerUpdateHandler(new TimerHandler(1.1f, new ITimerCallback() {
 //			
