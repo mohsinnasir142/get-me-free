@@ -215,7 +215,7 @@ public class ResourceManager {
 		FontFactory.setAssetBasePath("gfx/loading/");
 		loadingTextureAtlas = new BuildableBitmapTextureAtlas(gameActivity.getTextureManager(), 1024,512,TextureOptions.BILINEAR);
 		
-	//	loading_region = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(loadingTextureAtlas, gameActivity.getAssets(),"spriteloadingscene1.png", 13,1);
+		//loading_region = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(loadingTextureAtlas, gameActivity.getAssets(),"spriteloadingscene1.png", 13,1);
 		try {
 			this.loadingTextureAtlas.build(new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 0, 1));
 			this.loadingTextureAtlas.load();
