@@ -53,7 +53,6 @@ import com.getmefree.Activity.GameActivity;
 import com.getmefree.Scenes.SceneManager.SceneType;
 import com.getmefree.other.Bullet;
 import com.getmefree.other.BulletPool;
-
 public class GameScene extends BaseScene implements OnClickListener {
 	private HUD gameHUD;
 	//which will be used for displaying game controller and score text.
